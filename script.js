@@ -11,33 +11,46 @@ const inputUser = document.getElementById("inputUser")
 const inputPassword = document.getElementById("inputPassword")
 const entrar = document.getElementById("entrar")
 const criarUser = document.getElementById("criarUser")
+// chamando os itens do html e guardando na variavel
 
 
-btnLogin.addEventListener("click", function() {    popupLogin.style.display = "block";
+
+
+btnLogin.addEventListener("click", function () {
+    popupLogin.style.display = "block";      //quando o btnLogin for clicado, ele vai abrir 
 })
 
-btnSing.addEventListener("click", function() {
-    popupSingUp.style.display = "block";
-})
- 
-sairLogin.addEventListener("click", function(){
-    popupLogin.style.display = "none";
+btnSing.addEventListener("click", function () {
+    popupSingUp.style.display = "block"; //quando o btnSing for clicado ele vai abrir
 })
 
-sairSing.addEventListener("click", function(){
-    popupSingUp.style.display = "none";
+sairLogin.addEventListener("click", function () {
+    popupLogin.style.display = "none"; //quando o botao de sairLogin for clicado ele vai fechar
 })
 
-entrar.addEventListener("click", function(){
-    
+sairSing.addEventListener("click", function () {
+    popupSingUp.style.display = "none"; //quando o botao de sairSing for clicado ele vai fechar
 })
 
-/*
+entrar.addEventListener("click", function () {
+    let usuarioEncontrado = usuarios.find(function (usuario) { //quando o botao de entrar for clicado ele vai comparar para ver se o usuario ja esta cadastrado, se nao tiver da "Usuario errado"
+        return inputUsuario.value === usuario.user
+    })
+    if (usuarioEncontrado) { 
+
+        if (inputSenha.value === usuarioEncontrado.password) {
+            console.log("Login Realizado com sucesso") //se o usuario tiver cadastrado ele vai verifica se a senha do input é a mesma do usuario cadastrado, se nao for da "Senha errada, tente novamente"
+        }else console.log("Senha errada, tente novamente")
+
+    } else console.log("Usuario errado")
+})
+
+criarUser.addEventListener("click", function () {
+    let novoUsuario =
+        { user: inputUser.value, email: inputEmail.value, password: inputPassword.value } //cria um novo usuario assim que o botao de criar é clicado, pq ele pega os valores dos inputs e manda pra variavel usuarios
+    usuarios.push(novoUsuario)
+})
+
 let usuarios = [
-    {id:1, email:"tanana@gmail.com", user:"matheus", password:"semsenha"}
+    { id: 1, email: "tanana@gmail.com", user: "matheus", password: "semsenha" } //variavel que guarda o array de usuarios
 ]
-
-usuarios.push[
-    {id:2, email:"@gmail.com", user:"suehtam", password:"comsenha"}
-]/*
-
