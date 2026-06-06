@@ -33,6 +33,15 @@ sairSing.addEventListener("click", function () {
 })
 
 entrar.addEventListener("click", function () {
+    if(inputUsuario.value === ""){
+        console.log("Preencha todos os campos")
+        return
+    }
+    if(inputSenha.value === ""){
+        console.log("Preencha todos os campos")
+        return
+    }
+
     let usuarioEncontrado = usuarios.find(function (usuario) { //quando o botao de entrar for clicado ele vai comparar para ver se o usuario ja esta cadastrado, se nao tiver da "Usuario errado"
         return inputUsuario.value === usuario.user
     })
@@ -46,9 +55,41 @@ entrar.addEventListener("click", function () {
 })
 
 criarUser.addEventListener("click", function () {
+    if(inputEmail.value == ""){
+        console.log("Preencha todos os campos")
+        return
+    }
+    if(inputUser.value == ""){
+        console.log("Preencha todos os campos")
+        return
+    }
+    if(inputPassword.value == ""){
+        console.log("Preencha todos os campos")
+        return
+    } 
+
+    let usuarioExistente = usuarios.find(function(usuario){ // no criarUser do add event listener basicamente o criarUser verifica se nao ta vazio os campos (o addeventlistener do login tbm verifica os campos), o singUp verifica se o usuario ou email ja existe
+
+        if (inputEmail.value === usuario.email){
+            console.log("Email já existente")
+            return inputEmail.value === usuario.email
+        }
+        if (inputUser.value === usuario.user){
+            console.log("Usuario já existente")
+            return inputUser.value === usuario.user
+        }
+
+    })
+
+    if (usuarioExistente) {
+        return
+    }
+
     let novoUsuario =
         { user: inputUser.value, email: inputEmail.value, password: inputPassword.value } //cria um novo usuario assim que o botao de criar é clicado, pq ele pega os valores dos inputs e manda pra variavel usuarios
     usuarios.push(novoUsuario)
+
+    console.log("Usuario criado com sucesso")
 })
 
 let usuarios = [
