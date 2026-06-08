@@ -13,6 +13,7 @@ const entrar = document.getElementById("entrar")
 const criarUser = document.getElementById("criarUser")
 const mensagemLogin = document.getElementById("mensagemLogin")
 const mensagemSing = document.getElementById("mensagemSing")
+const btnSair = document.getElementById("btnSair")
 // chamando os itens do html e guardando na variavel
 
 
@@ -34,6 +35,10 @@ sairSing.addEventListener("click", function () {
     popupSingUp.style.display = "none"; //quando o botao de sairSing for clicado ele vai fechar
 })
 
+btnSair.addEventListener("click", function(){
+    mensagemLogin.textContent = ""
+})
+
 entrar.addEventListener("click", function () {
     if (inputUsuario.value === "") {
         mensagemLogin.textContent = "Preencha todos os campos"
@@ -50,8 +55,7 @@ entrar.addEventListener("click", function () {
     if (usuarioEncontrado) {
 
         if (inputSenha.value === usuarioEncontrado.password) {
-            mensagemLogin.textContent = "Login Realizado com sucesso" //se o usuario tiver cadastrado ele vai verifica se a senha do input é a mesma do usuario cadastrado e se for fecha o popup, se nao for da "Senha errada, tente novamente"
-            console.log ("Eu sei que não vai dar pra ver pq a popup vai fecha, mas mesmo assim eu deixei, pq se o usuario abrir a popup dnv, vai estar a mensagem lá")
+            mensagemLogin.textContent = `Bem vindo ${inputUsuario.value}` //se o usuario tiver cadastrado ele vai verifica se a senha do input é a mesma do usuario cadastrado e se for fecha o popup, se nao for da "Senha errada, tente novamente"
             popupLogin.style.display = "none"
         } 
         else mensagemLogin.textContent = "Senha errada, tente novamente"
