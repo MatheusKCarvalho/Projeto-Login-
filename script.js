@@ -11,6 +11,8 @@ const inputUser = document.getElementById("inputUser")
 const inputPassword = document.getElementById("inputPassword")
 const entrar = document.getElementById("entrar")
 const criarUser = document.getElementById("criarUser")
+const mensagemLogin = document.getElementById("mensagemLogin")
+const mensagemSing = document.getElementById("mensagemSing")
 // chamando os itens do html e guardando na variavel
 
 
@@ -33,49 +35,52 @@ sairSing.addEventListener("click", function () {
 })
 
 entrar.addEventListener("click", function () {
-    if(inputUsuario.value === ""){
-        console.log("Preencha todos os campos")
+    if (inputUsuario.value === "") {
+        mensagemLogin.textContent = "Preencha todos os campos"
         return
     }
-    if(inputSenha.value === ""){
-        console.log("Preencha todos os campos")
+    if (inputSenha.value === "") {
+        mensagemLogin.textContent = "Preencha todos os campos"
         return
     }
 
     let usuarioEncontrado = usuarios.find(function (usuario) { //quando o botao de entrar for clicado ele vai comparar para ver se o usuario ja esta cadastrado, se nao tiver da "Usuario errado"
         return inputUsuario.value === usuario.user
     })
-    if (usuarioEncontrado) { 
+    if (usuarioEncontrado) {
 
         if (inputSenha.value === usuarioEncontrado.password) {
-            console.log("Login Realizado com sucesso") //se o usuario tiver cadastrado ele vai verifica se a senha do input é a mesma do usuario cadastrado, se nao for da "Senha errada, tente novamente"
-        }else console.log("Senha errada, tente novamente")
+            mensagemLogin.textContent = "Login Realizado com sucesso" //se o usuario tiver cadastrado ele vai verifica se a senha do input é a mesma do usuario cadastrado e se for fecha o popup, se nao for da "Senha errada, tente novamente"
+            console.log ("Eu sei que não vai dar pra ver pq a popup vai fecha, mas mesmo assim eu deixei, pq se o usuario abrir a popup dnv, vai estar a mensagem lá")
+            popupLogin.style.display = "none"
+        } 
+        else mensagemLogin.textContent = "Senha errada, tente novamente"
 
-    } else console.log("Usuario errado")
+    } else mensagemLogin.textContent = "Usuario errado"
 })
 
 criarUser.addEventListener("click", function () {
-    if(inputEmail.value == ""){
-        console.log("Preencha todos os campos")
+    if (inputEmail.value == "") {
+        mensagemSing.textContent = "Preencha todos os campos"
         return
     }
-    if(inputUser.value == ""){
-        console.log("Preencha todos os campos")
+    if (inputUser.value == "") {
+        mensagemSing.textContent = "Preencha todos os campos"
         return
     }
-    if(inputPassword.value == ""){
-        console.log("Preencha todos os campos")
+    if (inputPassword.value == "") {
+        mensagemSing.textContent = "Preencha todos os campos"
         return
-    } 
+    }
 
-    let usuarioExistente = usuarios.find(function(usuario){ // no criarUser do add event listener basicamente o criarUser verifica se nao ta vazio os campos (o addeventlistener do login tbm verifica os campos), o singUp verifica se o usuario ou email ja existe
+    let usuarioExistente = usuarios.find(function (usuario) { // no criarUser do add event listener basicamente o criarUser verifica se nao ta vazio os campos (o addeventlistener do login tbm verifica os campos), o singUp verifica se o usuario ou email ja existe
 
-        if (inputEmail.value === usuario.email){
-            console.log("Email já existente")
+        if (inputEmail.value === usuario.email) {
+            mensagemSing.textContent = "Email já existente"
             return inputEmail.value === usuario.email
         }
-        if (inputUser.value === usuario.user){
-            console.log("Usuario já existente")
+        if (inputUser.value === usuario.user) {
+            mensagemSing.textContent = "Usuario já existente"
             return inputUser.value === usuario.user
         }
 
@@ -86,12 +91,17 @@ criarUser.addEventListener("click", function () {
     }
 
     let novoUsuario =
-        { user: inputUser.value, email: inputEmail.value, password: inputPassword.value } //cria um novo usuario assim que o botao de criar é clicado, pq ele pega os valores dos inputs e manda pra variavel usuarios
+        { user: inputUser.value, email: inputEmail.value, password: inputPassword.value } //cria um novo usuario assim que o botao de criar é clicado, pq ele pega os valores dos inputs e manda pra variavel usuarios, e ele fecha o popup apos cadastro ser concluido
     usuarios.push(novoUsuario)
+    mensagemSing.textContent = "Usuario criado com sucesso"
+    console.log ("Eu sei que não vai dar pra ver pq a popup vai fecha, mas mesmo assim eu deixei, pq se o usuario abrir a popup dnv, vai estar a mensagem lá")
+    inputEmail.value = ""
+    inputUser.value = ""
+    inputPassword.value = ""
 
-    console.log("Usuario criado com sucesso")
+    popupSingUp.style.display = "none"
 })
 
 let usuarios = [
-    { id: 1, email: "tanana@gmail.com", user: "matheus", password: "semsenha" } //variavel que guarda o array de usuarios
+    { id: 1, email: "", user: "", password: "" } //variavel que guarda o array de usuarios
 ]
