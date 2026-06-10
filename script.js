@@ -97,6 +97,7 @@ criarUser.addEventListener("click", function () {
     let novoUsuario =
         { user: inputUser.value, email: inputEmail.value, password: inputPassword.value } //cria um novo usuario assim que o botao de criar é clicado, pq ele pega os valores dos inputs e manda pra variavel usuarios, e ele fecha o popup apos cadastro ser concluido
     usuarios.push(novoUsuario)
+    localStorage.setItem("usuarios", JSON.stringify(usuarios)) //isso é pra armazenar os usuarios no navegador como string
     mensagemSing.textContent = "Usuario criado com sucesso"
     console.log ("Eu sei que não vai dar pra ver pq a popup vai fecha, mas mesmo assim eu deixei, pq se o usuario abrir a popup dnv, vai estar a mensagem lá")
     inputEmail.value = ""
@@ -106,6 +107,11 @@ criarUser.addEventListener("click", function () {
     popupSingUp.style.display = "none"
 })
 
-let usuarios = [
-    { id: 1, email: "", user: "", password: "" } //variavel que guarda o array de usuarios
-]
+
+
+let usuariosSalvos = localStorage.getItem("usuarios")
+let usuarios
+
+if (usuariosSalvos){
+usuarios = JSON.parse(usuariosSalvos) // essa parte do codigo significa, se usuariosSalvos existe, usuarios é igual ao usuariosSalvos do site, se não, usuarios está vazio
+}else usuarios = []
