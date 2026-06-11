@@ -118,7 +118,7 @@ if (usuariosSalvos){
 usuarios = JSON.parse(usuariosSalvos) // essa parte do codigo significa, se usuariosSalvos existe, usuarios é igual ao usuariosSalvos do site, se não, usuarios está vazio
 }else usuarios = []
 
-let usuariosLogado = localStorage.getItem("usuarioLogado")
+let usuariosLogado = localStorage.getItem("usuariosLogado")
 
 if(usuariosLogado){  // essa parte do codigo significa, se usuariosLogado existe, usuarios é igual ao usuariosLogado do site, se sim mostra a mensagem de boas vindas dnv, se não, n faz nada
  let  usuario = JSON.parse(usuariosLogado)
