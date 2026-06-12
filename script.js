@@ -37,7 +37,10 @@ sairSing.addEventListener("click", function () {
 
 btnSair.addEventListener("click", function(){
     mensagemLogin.textContent = ""
-    localStorage.removeItem("usuarioLogado") // isso remove o usuario logado e o texto de bem vindo, quando vc clica em sair
+    localStorage.removeItem("usuariosLogado") // isso remove o usuario logado e o texto de bem vindo, quando vc clica em sair
+    btnLogin.style.display = "block"
+    btnSing.style.display = "block"
+    btnSair.style.display = "none"
 })
 
 entrar.addEventListener("click", function () {
@@ -58,7 +61,11 @@ entrar.addEventListener("click", function () {
         if (inputSenha.value === usuarioEncontrado.password) {
             mensagemLogin.textContent = `Bem vindo ${inputUsuario.value}` //se o usuario tiver cadastrado ele vai verifica se a senha do input é a mesma do usuario cadastrado e se for fecha o popup, se nao for da "Senha errada, tente novamente"
             popupLogin.style.display = "none"
+            popupSingUp.style.display = "none"
             localStorage.setItem("usuariosLogado", JSON.stringify(usuarioEncontrado))
+            btnLogin.style.display = "none"
+            btnSing.style.display = "none"
+            btnSair.style.display = "block"
         } 
         else mensagemLogin.textContent = "Senha errada, tente novamente"
 
@@ -120,9 +127,19 @@ usuarios = JSON.parse(usuariosSalvos) // essa parte do codigo significa, se usua
 
 let usuariosLogado = localStorage.getItem("usuariosLogado")
 
-if(usuariosLogado){  // essa parte do codigo significa, se usuariosLogado existe, usuarios é igual ao usuariosLogado do site, se sim mostra a mensagem de boas vindas dnv, se não, n faz nada
+if(usuariosLogado){  // essa parte do codigo significa, se usuariosLogado existe, usuario é igual ao usuariosLogado do site, se sim mostra a mensagem de boas vindas dnv, se não, n faz nada
  let  usuario = JSON.parse(usuariosLogado)
     mensagemLogin.textContent = `Bem vindo ${usuario.user}`
+}
+
+if(usuariosLogado){
+    btnLogin.style.display = "none"
+    btnSing.style.display = "none"
+    btnSair.style.display = "block"
+} else {
+    btnLogin.style.display = "block"
+    btnSing.style.display = "block"
+    btnSair.style.display = "none"
 }
 
 // quando o codigo estiver pronto, reler e ve se comentei tudo certo e não esqueci de atualizar nada (vou fazer isso quando tiver pronto para conferir se não esqueci nada)
