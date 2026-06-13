@@ -14,6 +14,8 @@ const criarUser = document.getElementById("criarUser")
 const mensagemLogin = document.getElementById("mensagemLogin")
 const mensagemSing = document.getElementById("mensagemSing")
 const btnSair = document.getElementById("btnSair")
+const inputNovoNome = document.getElementById("inputNovoNome")
+const btnSalvaNome = document.getElementById("btnSalvaNome")
 // chamando os itens do html e guardando na variavel
 
 
@@ -41,7 +43,31 @@ btnSair.addEventListener("click", function(){
     btnLogin.style.display = "block"
     btnSing.style.display = "block"
     btnSair.style.display = "none"
+    inputNovoNome.style.display = "none"
+    btnSalvaNome.style.display = "none"
 })
+
+    btnSalvaNome.style.display = "none"
+    inputNovoNome.style.display = "none"
+    btnSair.style.display = "none"
+
+mensagemLogin.addEventListener("click", function(){
+    btnSalvaNome.style.display = "block"
+    inputNovoNome.style.display = "block"
+})
+
+btnSalvaNome.addEventListener("click", function(){
+    let usuariosLogado = localStorage.getItem("usuariosLogado")
+    let usuarioLogado = JSON.parse(usuariosLogado)
+    let usuarioEncontrado = usuarios.find(function(usuario){
+        return usuarioLogado.user === usuario.user
+    })
+    usuarioEncontrado.user = inputNovoNome.value
+    mensagemLogin.textContent = `Bem vindo ${inputNovoNome.value}`
+    localStorage.setItem("usuarios", JSON.stringify(usuarios))
+    localStorage.setItem("usuariosLogado", JSON.stringify(usuarioEncontrado))
+})
+
 
 entrar.addEventListener("click", function () {
     if (inputUsuario.value === "") {
@@ -127,6 +153,11 @@ usuarios = JSON.parse(usuariosSalvos) // essa parte do codigo significa, se usua
 
 let usuariosLogado = localStorage.getItem("usuariosLogado")
 
+    let usuarioLogado = JSON.parse(usuariosLogado)
+    let usuarioEncontrado = usuarios.find(function (usuario) { //quando o botao de entrar for clicado ele vai comparar para ver se o usuario ja esta cadastrado, se nao tiver da "Usuario errado"
+        return usuarioLogado.user === usuario.user
+    })
+
 if(usuariosLogado){  // essa parte do codigo significa, se usuariosLogado existe, usuario é igual ao usuariosLogado do site, se sim mostra a mensagem de boas vindas dnv, se não, n faz nada
  let  usuario = JSON.parse(usuariosLogado)
     mensagemLogin.textContent = `Bem vindo ${usuario.user}`
@@ -141,5 +172,7 @@ if(usuariosLogado){
     btnSing.style.display = "block"
     btnSair.style.display = "none"
 }
+
+
 
 // quando o codigo estiver pronto, reler e ve se comentei tudo certo e não esqueci de atualizar nada (vou fazer isso quando tiver pronto para conferir se não esqueci nada)
