@@ -18,6 +18,7 @@ const inputNovoNome = document.getElementById("inputNovoNome")
 const btnSalvaNome = document.getElementById("btnSalvaNome")
 const inputNovaSenha = document.getElementById("inputNovaSenha")
 const btnSalvaSenha = document.getElementById("btnSalvaSenha")
+const deletarConta = document.getElementById("deletarConta")
 // chamando os itens do html e guardando na variavel
 
 
@@ -49,6 +50,7 @@ btnSair.addEventListener("click", function(){
     btnSalvaNome.style.display = "none"
     inputNovaSenha.style.display = "none"
     btnSalvaSenha.style.display = "none"
+    deletarConta.style.display = "none"
 })
 
     btnSalvaNome.style.display = "none"
@@ -56,6 +58,7 @@ btnSair.addEventListener("click", function(){
     btnSair.style.display = "none"
     btnSalvaSenha.style.display = "none"
     inputNovaSenha.style.display = "none"
+    deletarConta.style.display = "none"
 
 mensagemLogin.addEventListener("click", function(){
     btnSalvaNome.style.display = "block"
@@ -110,12 +113,13 @@ entrar.addEventListener("click", function () {
             btnLogin.style.display = "none"
             btnSing.style.display = "none"
             btnSair.style.display = "block"
+            inputNovaSenha.style.display = "block"
+            btnSalvaSenha.style.display = "block"
+            deletarConta.style.display = "block"
         } 
         else mensagemLogin.textContent = "Senha errada, tente novamente"
 
     } else mensagemLogin.textContent = "Usuario errado"
-    inputNovaSenha.style.display = "block"
-    btnSalvaSenha.style.display = "block"
 })
 
 
@@ -193,5 +197,25 @@ if(usuariosLogado){
     inputNovaSenha.style.display = "block"
     btnSalvaSenha.style.display = "block"
 }
+
+deletarConta.addEventListener("click", function(){
+    let usuariosLogado = localStorage.getItem("usuariosLogado")
+    let usuarioLogado = JSON.parse(usuariosLogado)
+    let novoArray = usuarios.filter(function(usuario){
+    return usuario.user !== usuarioLogado.user
+})
+usuarios = novoArray
+localStorage.setItem("usuarios", JSON.stringify(usuarios))
+mensagemLogin.textContent = ""
+localStorage.removeItem("usuariosLogado") // isso remove o usuario logado e o texto de bem vindo, quando vc clica em sair
+btnLogin.style.display = "block"
+btnSing.style.display = "block"
+btnSair.style.display = "none"
+inputNovoNome.style.display = "none"
+btnSalvaNome.style.display = "none"
+inputNovaSenha.style.display = "none"
+btnSalvaSenha.style.display = "none"
+deletarConta.style.display = "none"
+})
 
 // quando o codigo estiver pronto, reler e ve se comentei tudo certo e não esqueci de atualizar nada (vou fazer isso quando tiver pronto para conferir se não esqueci nada)
