@@ -76,6 +76,7 @@ btnSalvaNome.addEventListener("click", function(){
     })
     usuarioEncontrado.user = inputNovoNome.value
     mensagemLogin.textContent = `Bem vindo ${inputNovoNome.value}`
+    perfilNome.textContent = `Nome: ${usuarioEncontrado.user}`
     localStorage.setItem("usuarios", JSON.stringify(usuarios))
     localStorage.setItem("usuariosLogado", JSON.stringify(usuarioEncontrado))
 })
