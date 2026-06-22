@@ -19,10 +19,11 @@ const btnSalvaNome = document.getElementById("btnSalvaNome")
 const inputNovaSenha = document.getElementById("inputNovaSenha")
 const btnSalvaSenha = document.getElementById("btnSalvaSenha")
 const deletarConta = document.getElementById("deletarConta")
+const perfilUsuario = document.getElementById("perfilUsuario")
+const perfilNome = document.getElementById("perfilNome")
+const perfilEmail = document.getElementById("perfilEmail")
+
 // chamando os itens do html e guardando na variavel
-
-
-
 
 btnLogin.addEventListener("click", function () {
     popupLogin.style.display = "block";      //quando o btnLogin for clicado, ele vai abrir 
@@ -51,6 +52,7 @@ btnSair.addEventListener("click", function(){
     inputNovaSenha.style.display = "none"
     btnSalvaSenha.style.display = "none"
     deletarConta.style.display = "none"
+    perfilUsuario.style.display = "none"
 })
 
     btnSalvaNome.style.display = "none"
@@ -59,6 +61,7 @@ btnSair.addEventListener("click", function(){
     btnSalvaSenha.style.display = "none"
     inputNovaSenha.style.display = "none"
     deletarConta.style.display = "none"
+    perfilUsuario.style.display = "none"
 
 mensagemLogin.addEventListener("click", function(){
     btnSalvaNome.style.display = "block"
@@ -116,6 +119,9 @@ entrar.addEventListener("click", function () {
             inputNovaSenha.style.display = "block"
             btnSalvaSenha.style.display = "block"
             deletarConta.style.display = "block"
+            perfilNome.textContent = `Nome: ${usuarioEncontrado.user}`
+            perfilEmail.textContent = `Email: ${usuarioEncontrado.email}`
+            perfilUsuario.style.display = "block"
         } 
         else mensagemLogin.textContent = "Senha errada, tente novamente"
 
@@ -181,22 +187,23 @@ let usuariosLogado = localStorage.getItem("usuariosLogado")
 if(usuariosLogado){  // essa parte do codigo significa, se usuariosLogado existe, usuario é igual ao usuariosLogado do site, se sim mostra a mensagem de boas vindas dnv, se não, n faz nada
  let  usuario = JSON.parse(usuariosLogado)
     mensagemLogin.textContent = `Bem vindo ${usuario.user}`
-}
+    perfilNome.textContent = `Nome: ${usuario.user}`
+    perfilEmail.textContent = `Email: ${usuario.email}`
 
-if(usuariosLogado){
     btnLogin.style.display = "none"
     btnSing.style.display = "none"
     btnSair.style.display = "block"
+    perfilUsuario.style.display = "block"
+    inputNovaSenha.style.display = "block"
+    btnSalvaSenha.style.display = "block"
+    deletarConta.style.display = "block"
 } else {
     btnLogin.style.display = "block"
     btnSing.style.display = "block"
     btnSair.style.display = "none"
 }
 
-if(usuariosLogado){
-    inputNovaSenha.style.display = "block"
-    btnSalvaSenha.style.display = "block"
-}
+
 
 deletarConta.addEventListener("click", function(){
     let usuariosLogado = localStorage.getItem("usuariosLogado")
