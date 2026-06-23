@@ -1,3 +1,8 @@
 .popup{
     display: none;
 }
+
+.escuro {
+    background-color: black;
+    color: white;
+}

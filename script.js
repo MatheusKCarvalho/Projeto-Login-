@@ -22,6 +22,7 @@ const deletarConta = document.getElementById("deletarConta")
 const perfilUsuario = document.getElementById("perfilUsuario")
 const perfilNome = document.getElementById("perfilNome")
 const perfilEmail = document.getElementById("perfilEmail")
+const btnTema = document.getElementById("btnTema")
 
 // chamando os itens do html e guardando na variavel
 
@@ -111,6 +112,9 @@ entrar.addEventListener("click", function () {
 
         if (inputSenha.value === usuarioEncontrado.password) {
             mensagemLogin.textContent = `Bem vindo ${inputUsuario.value}` //se o usuario tiver cadastrado ele vai verifica se a senha do input é a mesma do usuario cadastrado e se for fecha o popup, se nao for da "Senha errada, tente novamente"
+            perfilNome.textContent = `Nome: ${usuarioEncontrado.user}`
+            perfilEmail.textContent = `Email: ${usuarioEncontrado.email}`
+            perfilUsuario.style.display = "block"
             popupLogin.style.display = "none"
             popupSingUp.style.display = "none"
             localStorage.setItem("usuariosLogado", JSON.stringify(usuarioEncontrado))
@@ -120,9 +124,7 @@ entrar.addEventListener("click", function () {
             inputNovaSenha.style.display = "block"
             btnSalvaSenha.style.display = "block"
             deletarConta.style.display = "block"
-            perfilNome.textContent = `Nome: ${usuarioEncontrado.user}`
-            perfilEmail.textContent = `Email: ${usuarioEncontrado.email}`
-            perfilUsuario.style.display = "block"
+
         } 
         else mensagemLogin.textContent = "Senha errada, tente novamente"
 
@@ -225,5 +227,18 @@ inputNovaSenha.style.display = "none"
 btnSalvaSenha.style.display = "none"
 deletarConta.style.display = "none"
 })
+
+btnTema.addEventListener("click",function(){
+    document.body.classList.toggle("escuro")
+    if(document.body.classList.contains("escuro")){
+    localStorage.setItem("tema", "escuro")
+    } else localStorage.setItem("tema", "claro")
+})
+    let tema = localStorage.getItem("tema")
+    if(tema === "escuro"){
+        document.body.classList.add("escuro")
+    }
+
+
 
 // quando o codigo estiver pronto, reler e ve se comentei tudo certo e não esqueci de atualizar nada (vou fazer isso quando tiver pronto para conferir se não esqueci nada)
