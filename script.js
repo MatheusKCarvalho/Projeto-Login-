@@ -23,6 +23,9 @@ const perfilUsuario = document.getElementById("perfilUsuario")
 const perfilNome = document.getElementById("perfilNome")
 const perfilEmail = document.getElementById("perfilEmail")
 const btnTema = document.getElementById("btnTema")
+const inputPost = document.getElementById("inputPost")
+const btnPostar = document.getElementById("btnPostar")
+const listaPosts = document.getElementById("listaPosts")
 
 // chamando os itens do html e guardando na variavel
 
@@ -54,6 +57,8 @@ btnSair.addEventListener("click", function(){
     btnSalvaSenha.style.display = "none"
     deletarConta.style.display = "none"
     perfilUsuario.style.display = "none"
+    btnPostar.style.display = "none"
+    inputPost.style.display = "none"
 })
 
     btnSalvaNome.style.display = "none"
@@ -63,6 +68,8 @@ btnSair.addEventListener("click", function(){
     inputNovaSenha.style.display = "none"
     deletarConta.style.display = "none"
     perfilUsuario.style.display = "none"
+    btnPostar.style.display = "none"
+    inputPost.style.display = "none"
 
 mensagemLogin.addEventListener("click", function(){
     btnSalvaNome.style.display = "block"
@@ -124,6 +131,8 @@ entrar.addEventListener("click", function () {
             inputNovaSenha.style.display = "block"
             btnSalvaSenha.style.display = "block"
             deletarConta.style.display = "block"
+            btnPostar.style.display = "block"
+            inputPost.style.display = "block"
 
         } 
         else mensagemLogin.textContent = "Senha errada, tente novamente"
@@ -200,6 +209,8 @@ if(usuariosLogado){  // essa parte do codigo significa, se usuariosLogado existe
     inputNovaSenha.style.display = "block"
     btnSalvaSenha.style.display = "block"
     deletarConta.style.display = "block"
+    btnPostar.style.display = "block"
+    inputPost.style.display = "block"
 } else {
     btnLogin.style.display = "block"
     btnSing.style.display = "block"
@@ -239,6 +250,35 @@ btnTema.addEventListener("click",function(){
         document.body.classList.add("escuro")
     }
 
+btnPostar.addEventListener("click", function(){
+    let usuariosLogado = localStorage.getItem("usuariosLogado")
+    let usuarioLogado = JSON.parse(usuariosLogado)
+    let novoPost = {
+        autor: usuarioLogado.user,
+        texto: inputPost.value
+    }
+    posts.push(novoPost)
+    localStorage.setItem("posts", JSON.stringify(posts))
+inputPost.value = ""
+listaPosts.innerHTML += novoPost.autor + ": " + novoPost.texto + "<br>"
+})
+
+
+let postsSalvos = localStorage.getItem("posts")
+let posts
+
+
+
+if (postsSalvos){
+    posts = JSON.parse(postsSalvos)
+}else{
+    posts = []
+}
+
+    posts.forEach(function(postagem){
+    listaPosts.innerHTML += postagem.autor + ": " + postagem.texto + "<br>"
+    
+})
 
 
 // quando o codigo estiver pronto, reler e ve se comentei tudo certo e não esqueci de atualizar nada (vou fazer isso quando tiver pronto para conferir se não esqueci nada)
