@@ -26,6 +26,8 @@ const btnTema = document.getElementById("btnTema")
 const inputPost = document.getElementById("inputPost")
 const btnPostar = document.getElementById("btnPostar")
 const listaPosts = document.getElementById("listaPosts")
+const verSenha = document.getElementById("verSenha")
+const verSenhaCadastro = document.getElementById("verSenhaCadastro")
 
 // chamando os itens do html e guardando na variavel
 
@@ -210,6 +212,10 @@ btnTema.addEventListener("click",function(){
     }
 
 btnPostar.addEventListener("click", function(){
+
+    if(inputPost.value.trim() === ""){
+        return
+    }
     
     let usuarioLogado = pegarUsuarioLogado()
     let novoPost = {
@@ -271,5 +277,20 @@ function pegarUsuarioLogado(){
     return JSON.parse(localStorage.getItem("usuariosLogado"))
 }
 
+verSenha.addEventListener("click", function(){
+    if (inputSenha.type === "password"){
+        inputSenha.type = "text"
+    }else{
+        inputSenha.type = "password"
+    }
+})
+
+verSenhaCadastro.addEventListener("click",function(){
+    if(inputPassword.type === "password"){
+        inputPassword.type = "text"
+    }else{
+        inputPassword.type = "password"
+    }
+})
 
 // quando o codigo estiver pronto, reler e ve se comentei tudo certo e não esqueci de atualizar nada (vou fazer isso quando tiver pronto para conferir se não esqueci nada)
