@@ -48,28 +48,10 @@ sairSing.addEventListener("click", function () {
 btnSair.addEventListener("click", function(){
     mensagemLogin.textContent = ""
     localStorage.removeItem("usuariosLogado") // isso remove o usuario logado e o texto de bem vindo, quando vc clica em sair
-    btnLogin.style.display = "block"
-    btnSing.style.display = "block"
-    btnSair.style.display = "none"
-    inputNovoNome.style.display = "none"
-    btnSalvaNome.style.display = "none"
-    inputNovaSenha.style.display = "none"
-    btnSalvaSenha.style.display = "none"
-    deletarConta.style.display = "none"
-    perfilUsuario.style.display = "none"
-    btnPostar.style.display = "none"
-    inputPost.style.display = "none"
+    mostrarTelaDeslogada()
 })
 
-    btnSalvaNome.style.display = "none"
-    inputNovoNome.style.display = "none"
-    btnSair.style.display = "none"
-    btnSalvaSenha.style.display = "none"
-    inputNovaSenha.style.display = "none"
-    deletarConta.style.display = "none"
-    perfilUsuario.style.display = "none"
-    btnPostar.style.display = "none"
-    inputPost.style.display = "none"
+mostrarTelaDeslogada()
 
 mensagemLogin.addEventListener("click", function(){
     btnSalvaNome.style.display = "block"
@@ -77,25 +59,32 @@ mensagemLogin.addEventListener("click", function(){
 })
 
 btnSalvaNome.addEventListener("click", function(){
-    let usuariosLogado = localStorage.getItem("usuariosLogado")
-    let usuarioLogado = JSON.parse(usuariosLogado)
+    
+    let usuarioLogado = pegarUsuarioLogado()
     let usuarioEncontrado = usuarios.find(function(usuario){
         return usuarioLogado.user === usuario.user
     })
-    usuarioEncontrado.user = inputNovoNome.value
-    mensagemLogin.textContent = `Bem vindo ${inputNovoNome.value}`
+    let novoNome = inputNovoNome.value
+    usuarioEncontrado.user = novoNome
+    mensagemLogin.textContent = `Bem vindo ${novoNome}`
+    inputNovoNome.value = ""
     perfilNome.textContent = `Nome: ${usuarioEncontrado.user}`
     localStorage.setItem("usuarios", JSON.stringify(usuarios))
     localStorage.setItem("usuariosLogado", JSON.stringify(usuarioEncontrado))
+    inputNovoNome.style.display = "none"
+    btnSalvaNome.style.display = "none"
 })
 
 btnSalvaSenha.addEventListener("click", function(){
-    let usuariosLogado = localStorage.getItem("usuariosLogado")
-    let usuarioLogado = JSON.parse(usuariosLogado)
+    
+    let usuarioLogado = pegarUsuarioLogado()
     let usuarioEncontrado = usuarios.find(function(usuario){
         return usuarioLogado.user === usuario.user
     })
     usuarioEncontrado.password = inputNovaSenha.value
+    inputNovaSenha.value = ""
+    inputNovaSenha.style.display = "none"
+    btnSalvaSenha.style.display = "none"
     localStorage.setItem("usuarios", JSON.stringify(usuarios))
     localStorage.setItem("usuariosLogado", JSON.stringify(usuarioEncontrado))
 })
@@ -121,20 +110,13 @@ entrar.addEventListener("click", function () {
             mensagemLogin.textContent = `Bem vindo ${inputUsuario.value}` //se o usuario tiver cadastrado ele vai verifica se a senha do input é a mesma do usuario cadastrado e se for fecha o popup, se nao for da "Senha errada, tente novamente"
             perfilNome.textContent = `Nome: ${usuarioEncontrado.user}`
             perfilEmail.textContent = `Email: ${usuarioEncontrado.email}`
-            perfilUsuario.style.display = "block"
             popupLogin.style.display = "none"
             popupSingUp.style.display = "none"
             localStorage.setItem("usuariosLogado", JSON.stringify(usuarioEncontrado))
-            btnLogin.style.display = "none"
-            btnSing.style.display = "none"
-            btnSair.style.display = "block"
-            inputNovaSenha.style.display = "block"
-            btnSalvaSenha.style.display = "block"
-            deletarConta.style.display = "block"
-            btnPostar.style.display = "block"
-            inputPost.style.display = "block"
+            mostrarTelaLogada()
 
-        } 
+        }
+
         else mensagemLogin.textContent = "Senha errada, tente novamente"
 
     } else mensagemLogin.textContent = "Usuario errado"
@@ -177,7 +159,6 @@ criarUser.addEventListener("click", function () {
     usuarios.push(novoUsuario)
     localStorage.setItem("usuarios", JSON.stringify(usuarios)) //isso é pra armazenar os usuarios no navegador como string
     mensagemSing.textContent = "Usuario criado com sucesso"
-    console.log ("Eu sei que não vai dar pra ver pq a popup vai fecha, mas mesmo assim eu deixei, pq se o usuario abrir a popup dnv, vai estar a mensagem lá")
     inputEmail.value = ""
     inputUser.value = ""
     inputPassword.value = ""
@@ -194,34 +175,19 @@ if (usuariosSalvos){
 usuarios = JSON.parse(usuariosSalvos) // essa parte do codigo significa, se usuariosSalvos existe, usuarios é igual ao usuariosSalvos do site, se não, usuarios está vazio
 }else usuarios = []
 
-let usuariosLogado = localStorage.getItem("usuariosLogado")
 
-if(usuariosLogado){  // essa parte do codigo significa, se usuariosLogado existe, usuario é igual ao usuariosLogado do site, se sim mostra a mensagem de boas vindas dnv, se não, n faz nada
- let  usuario = JSON.parse(usuariosLogado)
+let usuario = pegarUsuarioLogado()
+if(usuario){  // essa parte do codigo significa, se usuariosLogado existe, usuario é igual ao usuariosLogado do site, se sim mostra a mensagem de boas vindas dnv, se não, n faz nada
     mensagemLogin.textContent = `Bem vindo ${usuario.user}`
     perfilNome.textContent = `Nome: ${usuario.user}`
     perfilEmail.textContent = `Email: ${usuario.email}`
 
-    btnLogin.style.display = "none"
-    btnSing.style.display = "none"
-    btnSair.style.display = "block"
-    perfilUsuario.style.display = "block"
-    inputNovaSenha.style.display = "block"
-    btnSalvaSenha.style.display = "block"
-    deletarConta.style.display = "block"
-    btnPostar.style.display = "block"
-    inputPost.style.display = "block"
-} else {
-    btnLogin.style.display = "block"
-    btnSing.style.display = "block"
-    btnSair.style.display = "none"
-}
-
-
+mostrarTelaLogada()
+} 
 
 deletarConta.addEventListener("click", function(){
-    let usuariosLogado = localStorage.getItem("usuariosLogado")
-    let usuarioLogado = JSON.parse(usuariosLogado)
+    
+    let usuarioLogado = pegarUsuarioLogado()
     let novoArray = usuarios.filter(function(usuario){
     return usuario.user !== usuarioLogado.user
 })
@@ -229,14 +195,7 @@ usuarios = novoArray
 localStorage.setItem("usuarios", JSON.stringify(usuarios))
 mensagemLogin.textContent = ""
 localStorage.removeItem("usuariosLogado") // isso remove o usuario logado e o texto de bem vindo, quando vc clica em sair
-btnLogin.style.display = "block"
-btnSing.style.display = "block"
-btnSair.style.display = "none"
-inputNovoNome.style.display = "none"
-btnSalvaNome.style.display = "none"
-inputNovaSenha.style.display = "none"
-btnSalvaSenha.style.display = "none"
-deletarConta.style.display = "none"
+mostrarTelaDeslogada()
 })
 
 btnTema.addEventListener("click",function(){
@@ -251,8 +210,8 @@ btnTema.addEventListener("click",function(){
     }
 
 btnPostar.addEventListener("click", function(){
-    let usuariosLogado = localStorage.getItem("usuariosLogado")
-    let usuarioLogado = JSON.parse(usuariosLogado)
+    
+    let usuarioLogado = pegarUsuarioLogado()
     let novoPost = {
         autor: usuarioLogado.user,
         texto: inputPost.value
@@ -268,7 +227,6 @@ let postsSalvos = localStorage.getItem("posts")
 let posts
 
 
-
 if (postsSalvos){
     posts = JSON.parse(postsSalvos)
 }else{
@@ -279,6 +237,39 @@ if (postsSalvos){
     listaPosts.innerHTML += postagem.autor + ": " + postagem.texto + "<br>"
     
 })
+
+
+function mostrarTelaLogada(){
+    btnLogin.style.display = "none"
+    btnSing.style.display = "none"
+    btnSair.style.display = "block"
+    perfilUsuario.style.display = "block"
+    inputNovaSenha.style.display = "block"
+    btnSalvaSenha.style.display = "block"
+    deletarConta.style.display = "block"
+    btnPostar.style.display = "block"
+    inputPost.style.display = "block"
+}
+
+function mostrarTelaDeslogada(){
+    btnLogin.style.display = "block"
+    btnSing.style.display = "block"
+    btnSair.style.display = "none"
+    inputNovoNome.style.display = "none"
+    btnSalvaNome.style.display = "none"
+    inputNovaSenha.style.display = "none"
+    btnSalvaSenha.style.display = "none"
+    deletarConta.style.display = "none"
+    perfilUsuario.style.display = "none"
+    btnPostar.style.display = "none"
+    inputPost.style.display = "none"
+    perfilNome.textContent = ""
+    perfilEmail.textContent = ""
+}
+
+function pegarUsuarioLogado(){
+    return JSON.parse(localStorage.getItem("usuariosLogado"))
+}
 
 
 // quando o codigo estiver pronto, reler e ve se comentei tudo certo e não esqueci de atualizar nada (vou fazer isso quando tiver pronto para conferir se não esqueci nada)
