@@ -219,13 +219,14 @@ btnPostar.addEventListener("click", function(){
     
     let usuarioLogado = pegarUsuarioLogado()
     let novoPost = {
+        id: Date.now(),
         autor: usuarioLogado.user,
         texto: inputPost.value
     }
     posts.push(novoPost)
     localStorage.setItem("posts", JSON.stringify(posts))
 inputPost.value = ""
-listaPosts.innerHTML += novoPost.autor + ": " + novoPost.texto + "<br>"
+listaPosts.innerHTML += novoPost.autor + ": " + novoPost.texto + ' <button data-id"' + novoPost.id + '">Excluir</button><br>'
 })
 
 
@@ -240,7 +241,7 @@ if (postsSalvos){
 }
 
     posts.forEach(function(postagem){
-    listaPosts.innerHTML += postagem.autor + ": " + postagem.texto + "<br>"
+    listaPosts.innerHTML += postagem.autor + ": " + postagem.texto + ' <button data-id"' + novoPost.id + '">Excluir</button><br>'
     
 })
 
@@ -292,5 +293,7 @@ verSenhaCadastro.addEventListener("click",function(){
         inputPassword.type = "password"
     }
 })
+
+
 
 // quando o codigo estiver pronto, reler e ve se comentei tudo certo e não esqueci de atualizar nada (vou fazer isso quando tiver pronto para conferir se não esqueci nada)
