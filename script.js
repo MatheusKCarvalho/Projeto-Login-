@@ -226,7 +226,7 @@ btnPostar.addEventListener("click", function(){
     posts.push(novoPost)
     localStorage.setItem("posts", JSON.stringify(posts))
 inputPost.value = ""
-listaPosts.innerHTML += novoPost.autor + ": " + novoPost.texto + ' <button data=id"' + novoPost.id + '">Excluir</button><br>'
+listaPosts.innerHTML += novoPost.autor + ": " + novoPost.texto + ' <button data-id="' + novoPost.id + '">Excluir</button><br>'
 })
 
 
@@ -241,13 +241,32 @@ if (postsSalvos){
 }
 
     posts.forEach(function(postagem){
-    listaPosts.innerHTML += postagem.autor + ": " + postagem.texto + ' <button data=id"' + postagem.id + '">Excluir</button><br>'
+    listaPosts.innerHTML += postagem.autor + ": " + postagem.texto + ' <button data-id="' + postagem.id + '">Excluir</button><br>'
     
 })
 
 listaPosts.addEventListener("click", function(event){
-    console.log(event.target)
+    if(event.target.tagName === "BUTTON"){
+        let id = event.target.dataset.id
+        posts = posts.filter(function(post){
+        return post.id !== Number(id)
+        })
+        localStorage.setItem("posts", JSON.stringify(posts))
+
+        listaPosts.innerHTML = ""
+        
+        posts.forEach(function(postagem){
+            listaPosts.innerHTML += postagem.autor + ": " + postagem.texto +
+            '<button data-id="' + postagem.id + '">Excluir</button<br>' 
+        })
+    }
 })
+
+
+
+    //let usuarioEncontrado = usuarios.find(function (usuario) {
+        //return inputUsuario.value === usuario.user
+    //})
 
 
 function mostrarTelaLogada(){
