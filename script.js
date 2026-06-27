@@ -226,7 +226,7 @@ btnPostar.addEventListener("click", function(){
     posts.push(novoPost)
     localStorage.setItem("posts", JSON.stringify(posts))
 inputPost.value = ""
-listaPosts.innerHTML += novoPost.autor + ": " + novoPost.texto + ' <button data-id="' + novoPost.id + '">Excluir</button><br>'
+mostrarPosts()
 })
 
 
@@ -241,7 +241,7 @@ if (postsSalvos){
 }
 
     posts.forEach(function(postagem){
-    listaPosts.innerHTML += postagem.autor + ": " + postagem.texto + ' <button data-id="' + postagem.id + '">Excluir</button><br>'
+    mostrarPosts()
     
 })
 
@@ -252,13 +252,7 @@ listaPosts.addEventListener("click", function(event){
         return post.id !== Number(id)
         })
         localStorage.setItem("posts", JSON.stringify(posts))
-
-        listaPosts.innerHTML = ""
-        
-        posts.forEach(function(postagem){
-            listaPosts.innerHTML += postagem.autor + ": " + postagem.texto +
-            '<button data-id="' + postagem.id + '">Excluir</button<br>' 
-        })
+        mostrarPosts()
     }
 })
 
@@ -295,6 +289,15 @@ function mostrarTelaDeslogada(){
     inputPost.style.display = "none"
     perfilNome.textContent = ""
     perfilEmail.textContent = ""
+}
+
+function mostrarPosts(){
+    listaPosts.innerHTML = ""
+        
+    posts.forEach(function(postagem){
+        listaPosts.innerHTML += postagem.autor + ": " + postagem.texto +
+        '<button data-id="' + postagem.id + '">Excluir</button<br>' 
+    })
 }
 
 function pegarUsuarioLogado(){
