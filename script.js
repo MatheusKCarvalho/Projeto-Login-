@@ -248,11 +248,25 @@ if (postsSalvos){
 listaPosts.addEventListener("click", function(event){
     if(event.target.tagName === "BUTTON"){
         let id = event.target.dataset.id
+        if(event.target.textContent === "Editar"){
+            let postEditar = posts.find(function(post){
+                return post.id === Number(id)
+            })
+            let novoTexto = prompt("Edite seu post:", postEditar.texto)
+            postEditar.texto = novoTexto
+            localStorage.setItem("posts", JSON.stringify(posts))
+            mostrarPosts()
+            if (novoTexto === null){
+                return
+            }
+            
+        }else{
         posts = posts.filter(function(post){
         return post.id !== Number(id)
         })
         localStorage.setItem("posts", JSON.stringify(posts))
         mostrarPosts()
+        }
     }
 })
 
@@ -296,7 +310,7 @@ function mostrarPosts(){
         
     posts.forEach(function(postagem){
         listaPosts.innerHTML += postagem.autor + ": " + postagem.texto +
-        '<button data-id="' + postagem.id + '">Excluir</button<br>' 
+        ' <button data-id="' + postagem.id + '">Editar</button> <button data-id="' + postagem.id + '">Excluir</button><br>'
     })
 }
 
