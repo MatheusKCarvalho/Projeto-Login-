@@ -221,7 +221,8 @@ btnPostar.addEventListener("click", function(){
     let novoPost = {
         id: Date.now(),
         autor: usuarioLogado.user,
-        texto: inputPost.value
+        texto: inputPost.value,
+        curtidas: 0
     }
     posts.push(novoPost)
     localStorage.setItem("posts", JSON.stringify(posts))
@@ -260,7 +261,17 @@ listaPosts.addEventListener("click", function(event){
                 return
             }
             
-        }else{
+        }else if (event.target.textContent.startsWith("👍")){
+            let postCurtir = post.find(function(post){
+                return post.id === Number(id)
+            })
+            postCurtir.curtidas + 1
+            localStorage.setItem("post", JSON.stringify(post))
+            mostrarPosts()
+
+        }
+        
+        else{
         posts = posts.filter(function(post){
         return post.id !== Number(id)
         })
@@ -268,6 +279,7 @@ listaPosts.addEventListener("click", function(event){
         mostrarPosts()
         }
     }
+
 })
 
 
@@ -310,7 +322,7 @@ function mostrarPosts(){
         
     posts.forEach(function(postagem){
         listaPosts.innerHTML += postagem.autor + ": " + postagem.texto +
-        ' <button data-id="' + postagem.id + '">Editar</button> <button data-id="' + postagem.id + '">Excluir</button><br>'
+        ' <button data-id="' + postagem.id + '">Editar</button> <button data-id="' + postagem.id + '">Excluir</button> <button data-id="' + postagem.id + '">👍' + postagem.curtidas + '</button><br>' 
     })
 }
 
