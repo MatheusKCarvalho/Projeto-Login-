@@ -28,6 +28,7 @@ const btnPostar = document.getElementById("btnPostar")
 const listaPosts = document.getElementById("listaPosts")
 const verSenha = document.getElementById("verSenha")
 const verSenhaCadastro = document.getElementById("verSenhaCadastro")
+const contadorCaracteres = document.getElementById("contadorCaracteres")
 
 // chamando os itens do html e guardando na variavel
 
@@ -362,6 +363,12 @@ verSenhaCadastro.addEventListener("click",function(){
     }
 })
 
+inputPost.addEventListener("input", function(){
+    let caractersPost = inputPost.value.length
 
+    if(caractersPost > 200){
+         inputPost.value = inputPost.value.slice(0,200)
+    }else{contadorCaracteres.textContent = caractersPost + "/200"}
+})
 
 // quando o codigo estiver pronto, reler e ve se comentei tudo certo e não esqueci de atualizar nada (vou fazer isso quando tiver pronto para conferir se não esqueci nada)
