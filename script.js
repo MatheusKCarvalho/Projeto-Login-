@@ -262,11 +262,11 @@ listaPosts.addEventListener("click", function(event){
             }
             
         }else if (event.target.textContent.startsWith("👍")){
-            let postCurtir = post.find(function(post){
+            let postCurtir = posts.find(function(post){
                 return post.id === Number(id)
             })
-            postCurtir.curtidas + 1
-            localStorage.setItem("post", JSON.stringify(post))
+            postCurtir.curtidas++
+            localStorage.setItem("posts", JSON.stringify(posts))
             mostrarPosts()
 
         }
