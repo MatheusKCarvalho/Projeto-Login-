@@ -262,8 +262,12 @@ listaPosts.addEventListener("click", function(event){
             }
             
         }else if (event.target.textContent.startsWith("👍")){
+            let usuarioLogado = pegarUsuarioLogado()
+            if(!usuarioLogado){
+                return
+            }
             let postCurtir = posts.find(function(post){
-                return post.id === Number(id)
+            return post.id === Number(id)
             })
             postCurtir.curtidas++
             localStorage.setItem("posts", JSON.stringify(posts))
@@ -318,13 +322,25 @@ function mostrarTelaDeslogada(){
 }
 
 function mostrarPosts(){
+
+    let usuarioLogado = pegarUsuarioLogado()
     listaPosts.innerHTML = ""
-        
     posts.forEach(function(postagem){
+        if (usuarioLogado){
+
+        if(usuarioLogado.user === postagem.autor){
         listaPosts.innerHTML += postagem.autor + ": " + postagem.texto +
         ' <button data-id="' + postagem.id + '">Editar</button> <button data-id="' + postagem.id + '">Excluir</button> <button data-id="' + postagem.id + '">👍' + postagem.curtidas + '</button><br>' 
-    })
+    }else{
+        listaPosts.innerHTML += postagem.autor + ": " + postagem.texto +
+        '<button data-id="' + postagem.id + '">👍' + postagem.curtidas + '</button><br>' 
+    }
+} else{
+            listaPosts.innerHTML += postagem.autor + ": " + postagem.texto +
+        '<button data-id="' + postagem.id + '">👍' + postagem.curtidas + '</button><br>' 
 }
+})}
+
 
 function pegarUsuarioLogado(){
     return JSON.parse(localStorage.getItem("usuariosLogado"))
