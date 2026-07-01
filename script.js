@@ -364,11 +364,12 @@ verSenhaCadastro.addEventListener("click",function(){
 })
 
 inputPost.addEventListener("input", function(){
-    let caractersPost = inputPost.value.length
+    let caracteresPost = inputPost.value.length
 
-    if(caractersPost > 200){
+    if(caracteresPost > 200){
          inputPost.value = inputPost.value.slice(0,200)
-    }else{contadorCaracteres.textContent = caractersPost + "/200"}
+         caracteresPost = inputPost.value.length
+    }contadorCaracteres.textContent = caracteresPost + "/200"
 })
 
 // quando o codigo estiver pronto, reler e ve se comentei tudo certo e não esqueci de atualizar nada (vou fazer isso quando tiver pronto para conferir se não esqueci nada)
