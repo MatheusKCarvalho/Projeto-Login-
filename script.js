@@ -277,11 +277,14 @@ listaPosts.addEventListener("click", function(event){
         }
         
         else{
+            let resposta = confirm("Tem certeza que deseja excluir este post?")
+            if (resposta === true){
         posts = posts.filter(function(post){
         return post.id !== Number(id)
         })
         localStorage.setItem("posts", JSON.stringify(posts))
         mostrarPosts()
+            }else{return}
         }
     }
 
