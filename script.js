@@ -255,12 +255,15 @@ listaPosts.addEventListener("click", function(event){
                 return post.id === Number(id)
             })
             let novoTexto = prompt("Edite seu post:", postEditar.texto)
-            postEditar.texto = novoTexto
-            localStorage.setItem("posts", JSON.stringify(posts))
-            mostrarPosts()
             if (novoTexto === null){
                 return
             }
+            if(novoTexto.trim() === ""){
+            return
+            }
+            postEditar.texto = novoTexto
+            localStorage.setItem("posts", JSON.stringify(posts))
+            mostrarPosts()
             
         }else if (event.target.textContent.startsWith("👍")){
             let usuarioLogado = pegarUsuarioLogado()
