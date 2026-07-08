@@ -29,6 +29,7 @@ const listaPosts = document.getElementById("listaPosts")
 const verSenha = document.getElementById("verSenha")
 const verSenhaCadastro = document.getElementById("verSenhaCadastro")
 const contadorCaracteres = document.getElementById("contadorCaracteres")
+const inputPesquisar = document.getElementById("inputPesquisar")
 
 // chamando os itens do html e guardando na variavel
 
@@ -228,7 +229,7 @@ btnPostar.addEventListener("click", function(){
     posts.push(novoPost)
     localStorage.setItem("posts", JSON.stringify(posts))
 inputPost.value = ""
-mostrarPosts()
+mostrarPosts(posts)
 })
 
 
@@ -243,7 +244,7 @@ if (postsSalvos){
 }
 
     posts.forEach(function(postagem){
-    mostrarPosts()
+    mostrarPosts(posts)
     
 })
 
@@ -263,7 +264,7 @@ listaPosts.addEventListener("click", function(event){
             }
             postEditar.texto = novoTexto
             localStorage.setItem("posts", JSON.stringify(posts))
-            mostrarPosts()
+            mostrarPosts(posts)
             
         }else if (event.target.textContent.startsWith("👍")){
             let usuarioLogado = pegarUsuarioLogado()
@@ -275,7 +276,7 @@ listaPosts.addEventListener("click", function(event){
             })
             postCurtir.curtidas++
             localStorage.setItem("posts", JSON.stringify(posts))
-            mostrarPosts()
+            mostrarPosts(posts)
 
         }
         
@@ -286,7 +287,7 @@ listaPosts.addEventListener("click", function(event){
         return post.id !== Number(id)
         })
         localStorage.setItem("posts", JSON.stringify(posts))
-        mostrarPosts()
+        mostrarPosts(posts)
             }
         }
     }
@@ -328,11 +329,11 @@ function mostrarTelaDeslogada(){
     perfilEmail.textContent = ""
 }
 
-function mostrarPosts(){
+function mostrarPosts(lista){
 
     let usuarioLogado = pegarUsuarioLogado()
     listaPosts.innerHTML = ""
-    posts.forEach(function(postagem){
+    lista.forEach(function(postagem){
         if (usuarioLogado){
 
         if(usuarioLogado.user === postagem.autor){
@@ -378,4 +379,12 @@ inputPost.addEventListener("input", function(){
     }contadorCaracteres.textContent = caracteresPost + "/200"
 })
 
+inputPesquisar.addEventListener("input", function(){
+    let valorPesquisa = inputPesquisar.value
+
+    let postsFiltrados = posts.filter(function(post){
+        return post.texto.includes(valorPesquisa) //como o filter ele pergunta pra cada elemento se deve ficar na lista, então ele precisa de um sim ou não, que seria true ou false, só que o includes ja faz isso
+    })
+    mostrarPosts(postsFiltrados)
+})
 // quando o codigo estiver pronto, reler e ve se comentei tudo certo e não esqueci de atualizar nada (vou fazer isso quando tiver pronto para conferir se não esqueci nada)
