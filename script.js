@@ -225,7 +225,8 @@ btnPostar.addEventListener("click", function(){
         id: Date.now(),
         autor: usuarioLogado.user,
         texto: inputPost.value,
-        curtidas: 0
+        curtidas: 0,
+        usuariosQueCurtiram: []
     }
     posts.push(novoPost)
     localStorage.setItem("posts", JSON.stringify(posts))
@@ -275,10 +276,19 @@ listaPosts.addEventListener("click", function(event){
             let postCurtir = posts.find(function(post){
             return post.id === Number(id)
             })
+            if (postCurtir.usuariosQueCurtiram.includes(usuarioLogado.user)){
+            postCurtir.usuariosQueCurtiram = postCurtir.usuariosQueCurtiram.filter(function(nome){
+                return nome !== usuarioLogado.user
+            })
+            postCurtir.curtidas--
+            localStorage.setItem("posts", JSON.stringify(posts))
+            mostrarPosts(posts)
+            } else {
+            postCurtir.usuariosQueCurtiram.push(usuarioLogado.user)
             postCurtir.curtidas++
             localStorage.setItem("posts", JSON.stringify(posts))
             mostrarPosts(posts)
-
+            }
         }
         
         else{
