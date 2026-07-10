@@ -395,4 +395,11 @@ btnRecentes.addEventListener("click", function(){
     })
     mostrarPosts(posts)
 })
+
+btnCurtidos.addEventListener("click", function(){
+    posts.sort(function(a, b){
+        return b.curtidas - a.curtidas
+    })
+    mostrarPosts(posts)
+})
 // quando o codigo estiver pronto, reler e ve se comentei tudo certo e não esqueci de atualizar nada (vou fazer isso quando tiver pronto para conferir se não esqueci nada)
