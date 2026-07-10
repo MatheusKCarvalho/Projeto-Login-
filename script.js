@@ -30,7 +30,8 @@ const verSenha = document.getElementById("verSenha")
 const verSenhaCadastro = document.getElementById("verSenhaCadastro")
 const contadorCaracteres = document.getElementById("contadorCaracteres")
 const inputPesquisar = document.getElementById("inputPesquisar")
-
+const btnRecentes = document.getElementById("btnRecentes")
+const btnCurtidos = document.getElementById("btnCurtidos")
 // chamando os itens do html e guardando na variavel
 
 btnLogin.addEventListener("click", function () {
@@ -386,5 +387,9 @@ inputPesquisar.addEventListener("input", function(){
         return post.texto.includes(valorPesquisa) //como o filter ele pergunta pra cada elemento se deve ficar na lista, então ele precisa de um sim ou não, que seria true ou false, só que o includes ja faz isso
     })
     mostrarPosts(postsFiltrados)
+})
+
+btnRecentes.addEventListener("click", function(){
+    posts.sort()
 })
 // quando o codigo estiver pronto, reler e ve se comentei tudo certo e não esqueci de atualizar nada (vou fazer isso quando tiver pronto para conferir se não esqueci nada)
