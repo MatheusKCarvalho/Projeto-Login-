@@ -390,6 +390,9 @@ inputPesquisar.addEventListener("input", function(){
 })
 
 btnRecentes.addEventListener("click", function(){
-    posts.sort()
+    posts.sort(function(a, b){
+        return b.id - a.id
+    })
+    mostrarPosts(posts)
 })
 // quando o codigo estiver pronto, reler e ve se comentei tudo certo e não esqueci de atualizar nada (vou fazer isso quando tiver pronto para conferir se não esqueci nada)
