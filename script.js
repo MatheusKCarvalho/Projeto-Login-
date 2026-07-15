@@ -292,6 +292,24 @@ listaPosts.addEventListener("click", function(event){
             }
         } else if (event.target.textContent.startsWith("💬")){
             let comentario = prompt("Digite seu comentario:" )
+            if (comentario === null){
+                return
+            }
+            if(comentario.trim() === ""){
+            return
+            }
+            let usuarioLogado = pegarUsuarioLogado()
+            let novoComentario ={
+                 id: Date.now(),
+                autor: usuarioLogado.user,
+                texto: comentario,
+            }
+            let postComentario = posts.find(function(post){
+            return post.id === Number(id)
+            })
+            postComentario.comentarios.push(novoComentario)
+            localStorage.setItem("posts", JSON.stringify(posts))
+            mostrarPosts(posts)
         }
         
         else{
@@ -352,16 +370,19 @@ function mostrarPosts(lista){
 
         if(usuarioLogado.user === postagem.autor){
         listaPosts.innerHTML += postagem.autor + ": " + postagem.texto +
-        ' <button data-id="' + postagem.id + '">Editar</button> <button data-id="' + postagem.id + '">Excluir</button> <button data-id="' + postagem.id + '">👍' + postagem.curtidas + '</button><br> <button data-id="' + postagem.id + '">💬 Comentar</button>'
+        ' <button data-id="' + postagem.id + '">Editar</button> <button data-id="' + postagem.id + '">Excluir</button> <button data-id="' + postagem.id + '">👍' + postagem.curtidas + '</button>' + '<button data-id="' + postagem.id + '">💬' + postagem.comentarios.length +'</button> <br>Comentarios:<br>'  
     }else{
         listaPosts.innerHTML += postagem.autor + ": " + postagem.texto +
-        '<button data-id="' + postagem.id + '">👍' + postagem.curtidas + '</button><br> <button data-id="' + postagem.id + '">💬 Comentar</button>' 
+        '<button data-id="' + postagem.id + '">👍' + postagem.curtidas + '</button>' + '<button data-id="' + postagem.id + '">💬' + postagem.comentarios.length +'</button> <br>Comentarios:<br>'  
     }
 
 } else{
             listaPosts.innerHTML += postagem.autor + ": " + postagem.texto +
-        '<button data-id="' + postagem.id + '">👍' + postagem.curtidas + '</button><br> <button data-id="' + postagem.id + '">💬 Comentar</button>'
+        '<button data-id="' + postagem.id + '">👍' + postagem.curtidas + '</button>' + '<button data-id="' + postagem.id + '">💬' + postagem.comentarios.length +'</button> <br>' + 'Comentarios:<br>'  
 }
+
+foreachaqui?
+
 })}
 
 
