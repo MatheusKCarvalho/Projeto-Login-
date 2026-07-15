@@ -381,7 +381,9 @@ function mostrarPosts(lista){
         '<button data-id="' + postagem.id + '">👍' + postagem.curtidas + '</button>' + '<button data-id="' + postagem.id + '">💬' + postagem.comentarios.length +'</button> <br>' + 'Comentarios:<br>'  
 }
 
-foreachaqui?
+postagem.comentarios.forEach(function(comentario){
+listaPosts.innerHTML += comentario.autor + ": " + comentario.texto + '<br>'
+})
 
 })}
 
