@@ -32,6 +32,8 @@ const contadorCaracteres = document.getElementById("contadorCaracteres")
 const inputPesquisar = document.getElementById("inputPesquisar")
 const btnRecentes = document.getElementById("btnRecentes")
 const btnCurtidos = document.getElementById("btnCurtidos")
+const btnPerfil = document.getElementById("btnPerfil")
+
 // chamando os itens do html e guardando na variavel
 
 btnLogin.addEventListener("click", function () {
@@ -438,5 +440,26 @@ btnCurtidos.addEventListener("click", function(){
         return b.curtidas - a.curtidas
     })
     mostrarPosts(posts)
+})
+
+btnPerfil.addEventListener("click", function(){
+    let usuarioLogado = pegarUsuarioLogado()
+    alert (usuarioLogado.user)
+    let meusPosts = posts.filter(function(post){
+    return post.autor === usuarioLogado.user
+})
+alert(meusPosts.length)
+    let meusComentarios = 0
+    posts.forEach(function(post){
+
+    post.comentarios.forEach(function(comentario){
+    if (comentario.autor === usuarioLogado.user){
+        meusComentarios++
+    }
+    })
+    })
+
+alert(meusComentarios)
+
 })
 // quando o codigo estiver pronto, reler e ve se comentei tudo certo e não esqueci de atualizar nada (vou fazer isso quando tiver pronto para conferir se não esqueci nada)
