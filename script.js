@@ -393,13 +393,45 @@ function mostrarPosts(lista){
         `
 
     }else{
-        listaPosts.innerHTML += postagem.autor + ": " + postagem.texto +
-        '<button data-id="' + postagem.id + '">👍' + postagem.curtidas + '</button>' + '<button data-id="' + postagem.id + '">💬' + postagem.comentarios.length +'</button> <br>Comentarios:<br>'  
+        listaPosts.innerHTML += `
+        <div class="post">
+
+            <div class="autor">${postagem.autor}</div>
+
+            <div class="texto">${postagem.texto}</div>
+
+            <div class="acoes">
+                <button data-id="${postagem.id}">👍${postagem.curtidas}</button>
+                <button data-id="${postagem.id}">💬${postagem.comentarios.length}</button>
+            </div>
+
+            <div class="comentarios">
+                Comentários:
+            </div>
+
+        </div>
+        `
     }
 
 } else{
-            listaPosts.innerHTML += postagem.autor + ": " + postagem.texto +
-        '<button data-id="' + postagem.id + '">👍' + postagem.curtidas + '</button>' + '<button data-id="' + postagem.id + '">💬' + postagem.comentarios.length +'</button> <br>' + 'Comentarios:<br>'  
+        listaPosts.innerHTML += `
+        <div class="post">
+
+            <div class="autor">${postagem.autor}</div>
+
+            <div class="texto">${postagem.texto}</div>
+
+            <div class="acoes">
+                <button data-id="${postagem.id}">👍${postagem.curtidas}</button>
+                <button data-id="${postagem.id}">💬${postagem.comentarios.length}</button>
+            </div>
+
+            <div class="comentarios">
+                Comentários:
+            </div>
+
+        </div>
+        `
 }
 
 postagem.comentarios.forEach(function(comentario){
