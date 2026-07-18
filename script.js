@@ -368,9 +368,21 @@ function mostrarPosts(lista){
     let usuarioLogado = pegarUsuarioLogado()
     listaPosts.innerHTML = ""
     lista.forEach(function(postagem){
+        let botoesAutor = ""
+
         if (usuarioLogado){
 
-        if(usuarioLogado.user === postagem.autor){
+        if (usuarioLogado.user === postagem.autor){
+        botoesAutor = `
+        <button data-id="${postagem.id}">Editar</button>
+        <button data-id="${postagem.id}">Excluir</button>
+        `
+        }}
+        let htmlComentarios = ""
+            postagem.comentarios.forEach(function(comentario){
+            htmlComentarios += comentario.autor + ": " +comentario.texto + "<br>"
+            })
+
         listaPosts.innerHTML += `
         <div class="post">
 
@@ -379,65 +391,22 @@ function mostrarPosts(lista){
             <div class="texto">${postagem.texto}</div>
 
             <div class="acoes">
-                <button data-id="${postagem.id}">Editar</button>
-                <button data-id="${postagem.id}">Excluir</button>
+
+                ${botoesAutor}
+                
                 <button data-id="${postagem.id}">👍${postagem.curtidas}</button>
                 <button data-id="${postagem.id}">💬${postagem.comentarios.length}</button>
+
             </div>
 
             <div class="comentarios">
-                Comentários:
+                Comentários:<br>
+                ${htmlComentarios}
+
             </div>
 
         </div>
         `
-
-    }else{
-        listaPosts.innerHTML += `
-        <div class="post">
-
-            <div class="autor">${postagem.autor}</div>
-
-            <div class="texto">${postagem.texto}</div>
-
-            <div class="acoes">
-                <button data-id="${postagem.id}">👍${postagem.curtidas}</button>
-                <button data-id="${postagem.id}">💬${postagem.comentarios.length}</button>
-            </div>
-
-            <div class="comentarios">
-                Comentários:
-            </div>
-
-        </div>
-        `
-    }
-
-} else{
-        listaPosts.innerHTML += `
-        <div class="post">
-
-            <div class="autor">${postagem.autor}</div>
-
-            <div class="texto">${postagem.texto}</div>
-
-            <div class="acoes">
-                <button data-id="${postagem.id}">👍${postagem.curtidas}</button>
-                <button data-id="${postagem.id}">💬${postagem.comentarios.length}</button>
-            </div>
-
-            <div class="comentarios">
-                Comentários:
-            </div>
-
-        </div>
-        `
-}
-
-postagem.comentarios.forEach(function(comentario){
-listaPosts.innerHTML += comentario.autor + ": " + comentario.texto + '<br>'
-})
-
 })}
 
 
@@ -527,4 +496,7 @@ alert(
 )
 
 })
+
+
+
 // quando o codigo estiver pronto, reler e ve se comentei tudo certo e não esqueci de atualizar nada (vou fazer isso quando tiver pronto para conferir se não esqueci nada)
