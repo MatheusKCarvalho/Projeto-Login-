@@ -379,6 +379,9 @@ function mostrarPosts(lista){
         `
         }}
         let htmlComentarios = ""
+        if (postagem.comentarios.length === 0){
+            htmlComentarios = "<em>Nenhum comentário.</em>"
+        }
             postagem.comentarios.forEach(function(comentario){
             htmlComentarios += comentario.autor + ": " +comentario.texto + "<br>"
             })

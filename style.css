@@ -6,3 +6,19 @@
     background-color: black;
     color: white;
 }
+
+.post{
+    padding: 20px;
+    border-radius: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ccc;
+}
+
+.autor{
+
+}
+ 
+.texto{
+
+}
