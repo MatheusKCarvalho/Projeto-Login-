@@ -14,9 +14,13 @@
     border-style: solid;
     border-color: #ccc;
     box-shadow: 0px 2px 8px rgba(0,0,0,0.15);
-    margin-bottom: 20px;
     max-width: 600px;
     margin: 20px auto;
+
+}
+
+.escuro .post{
+    background-color: #1f1f1f;
 }
 
 .autor{
