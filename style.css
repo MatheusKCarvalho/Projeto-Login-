@@ -24,9 +24,16 @@
 }
 
 .autor{
-
+font-weight: bold;
+font-size: 18px;
 }
  
 .texto{
+    font-size: 15px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
 
+.acoes{
+    
 }
