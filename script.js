@@ -383,7 +383,11 @@ function mostrarPosts(lista){
             htmlComentarios = "<em>Nenhum comentário.</em>"
         }
             postagem.comentarios.forEach(function(comentario){
-            htmlComentarios += comentario.autor + ": " +comentario.texto + "<br>"
+            htmlComentarios += `
+            <div class="comentario">
+                <strong>${comentario.autor}</strong>: ${comentario.texto}
+            </div>
+            `
             })
 
         listaPosts.innerHTML += `                                         
