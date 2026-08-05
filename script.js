@@ -374,8 +374,8 @@ function mostrarPosts(lista){
 
         if (usuarioLogado.user === postagem.autor){
         botoesAutor = `
-        <button data-id="${postagem.id}">Editar</button>
-        <button data-id="${postagem.id}">Excluir</button>
+        <button class="btn-editar" data-id="${postagem.id}">Editar</button>
+        <button class="btn-excluir" data-id="${postagem.id}">Excluir</button>
         `
         }}
         let htmlComentarios = ""
@@ -386,7 +386,7 @@ function mostrarPosts(lista){
             htmlComentarios += comentario.autor + ": " +comentario.texto + "<br>"
             })
 
-        listaPosts.innerHTML += `
+        listaPosts.innerHTML += `                                         
         <div class="post">
 
             <div class="autor">${postagem.autor}</div>
@@ -397,8 +397,8 @@ function mostrarPosts(lista){
 
                 ${botoesAutor}
                 
-                <button data-id="${postagem.id}">👍${postagem.curtidas}</button>
-                <button data-id="${postagem.id}">💬${postagem.comentarios.length}</button>
+                <button class="btn-like" data-id="${postagem.id}">👍${postagem.curtidas}</button>
+                <button class="btn-comentar" data-id="${postagem.id}">💬${postagem.comentarios.length}</button>
 
             </div>
 
