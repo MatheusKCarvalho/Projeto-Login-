@@ -149,4 +149,17 @@ font-size: 18px;
 
 .popup h2{
     margin-top: 0;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.popup .btn-senha{
+    width: auto;
+    padding: 5px 8px;
+    background-color: transparent;
+}
+
+.popup .btn-senha:hover{
+ background-color: transparent;
 }
