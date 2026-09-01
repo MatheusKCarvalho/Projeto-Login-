@@ -262,3 +262,101 @@ font-size: 18px;
     color: white;
     cursor: pointer;
 }
+
+#btnSalvaNome:hover{
+    background-color: #1d4ed8;
+}
+
+#btnSalvaSenha{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #2563eb;
+    color: white;
+    cursor: pointer;
+}
+
+#btnSalvaSenha:hover{
+    background-color: #1d4ed8;
+}
+
+#deletarConta{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ef4444;
+    color: white;
+    cursor: pointer;
+}
+
+#deletarConta:hover{
+    background-color: #dc2626;
+}
+
+#btnSair{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #6b7280;
+    color: white;
+    cursor: pointer;
+}
+
+#btnSair:hover{
+    background-color: #4b5563;
+}
+
+#btnLogin,
+#btnSing{
+    transition: 0.2s;
+}
+
+#btnSing:hover{
+    background-color: #1d4ed8;
+    transform: translateY(2px);
+}
+
+#btnPostar{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #2563eb;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#btnPostar:hover{
+    background-color: #1d4ed8;
+    transform: translateY(2px);
+}
+
+#btnRecentes{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #6b7280;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#btnRecentes:hover{
+    background-color: #4b5563;
+    transform: translateY(2px);
+}
+
+#btnPerfil{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #2563eb;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#btnPerfil:hover{
+    background-color: #1d4ed8;
+    transform: translateY(2px);
+}
