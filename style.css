@@ -360,3 +360,49 @@ font-size: 18px;
     background-color: #1d4ed8;
     transform: translateY(2px);
 }
+
+#btnTema{
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.escuro #btnTema{
+    background-color: #1f1f1f;
+    color: white;
+    border-color: #555;
+}
+
+#inputNovoNome{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+        margin-bottom: 10px;
+}
+
+#inputNovaSenha{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+#inputPost{
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+#inputPesquisar{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
