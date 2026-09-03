@@ -227,12 +227,7 @@ font-size: 18px;
 }
 
 #btnLogin{
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
     background-color: #2563eb;
-    color: white;
-    cursor: pointer;
 }
 
 #btnLogin:hover{
@@ -241,12 +236,7 @@ font-size: 18px;
 }
 
 #btnSing{
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
     background-color: #2563eb;
-    color: white;
-    cursor: pointer;
 }
 
 #btnSing:hover{
@@ -255,12 +245,7 @@ font-size: 18px;
 }
 
 #btnSalvaNome{
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
     background-color: #2563eb;
-    color: white;
-    cursor: pointer;
 }
 
 #btnSalvaNome:hover{
@@ -268,12 +253,7 @@ font-size: 18px;
 }
 
 #btnSalvaSenha{
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
     background-color: #2563eb;
-    color: white;
-    cursor: pointer;
 }
 
 #btnSalvaSenha:hover{
@@ -281,12 +261,7 @@ font-size: 18px;
 }
 
 #deletarConta{
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
     background-color: #ef4444;
-    color: white;
-    cursor: pointer;
 }
 
 #deletarConta:hover{
@@ -294,12 +269,7 @@ font-size: 18px;
 }
 
 #btnSair{
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
     background-color: #6b7280;
-    color: white;
-    cursor: pointer;
 }
 
 #btnSair:hover{
@@ -317,13 +287,7 @@ font-size: 18px;
 }
 
 #btnPostar{
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
     background-color: #2563eb;
-    color: white;
-    cursor: pointer;
-    transition: 0.2s;
 }
 
 #btnPostar:hover{
@@ -332,13 +296,7 @@ font-size: 18px;
 }
 
 #btnRecentes{
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
     background-color: #6b7280;
-    color: white;
-    cursor: pointer;
-    transition: 0.2s;
 }
 
 #btnRecentes:hover{
@@ -406,3 +364,17 @@ font-size: 18px;
     border-radius: 8px;
     box-sizing: border-box;
 }
+
+body{
+    padding: 20px;
+}
+
+.btn{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
