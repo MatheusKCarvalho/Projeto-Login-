@@ -124,12 +124,11 @@ font-size: 18px;
 }
 
 .popup button:hover{
-    background-color: #1d4ed8;
+    background-color:#1d4ed8;
+    transform: translateY(2px);
 }
 
-.popup .btn-fechar:hover{
-    background-color: transparent;
-}
+
 
 .popup .btn-fechar{
     width: auto;
@@ -140,6 +139,7 @@ font-size: 18px;
     position:absolute;
     top: 10px;
     right: 10px;
+    transition: 0.2s;
 }
 
 .popup .btn-fechar:hover{
@@ -209,19 +209,6 @@ font-size: 18px;
     color: #888;
 }
 
-.popup .btn-fechar:hover{
-    background-color: transparent;
-    color: white;
-}
-
-.popup .btn-fechar{
-    transition: 0.2s;
-}
-
-.popup button:hover{
-    transform: translateY(2px);
-}
-
 .popup button:active{
     transform: scale(0.98);
 }
@@ -230,18 +217,8 @@ font-size: 18px;
     background-color: #2563eb;
 }
 
-#btnLogin:hover{
-    background-color: #1d4ed8;
-    transform: translateY(2px);
-}
-
 #btnSing{
     background-color: #2563eb;
-}
-
-#btnSing:hover{
-    background-color: #1d4ed8;
-    transform: translateY(2px);
 }
 
 #btnSalvaNome{
@@ -276,23 +253,8 @@ font-size: 18px;
     background-color: #4b5563;
 }
 
-#btnLogin,
-#btnSing{
-    transition: 0.2s;
-}
-
-#btnSing:hover{
-    background-color: #1d4ed8;
-    transform: translateY(2px);
-}
-
 #btnPostar{
     background-color: #2563eb;
-}
-
-#btnPostar:hover{
-    background-color: #1d4ed8;
-    transform: translateY(2px);
 }
 
 #btnRecentes{
@@ -305,18 +267,7 @@ font-size: 18px;
 }
 
 #btnPerfil{
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
     background-color: #2563eb;
-    color: white;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-#btnPerfil:hover{
-    background-color: #1d4ed8;
-    transform: translateY(2px);
 }
 
 #btnTema{
@@ -378,3 +329,10 @@ body{
     transition: 0.2s;
 }
 
+#btnLogin:hover,
+#btnSing:hover,
+#btnPostar:hover,
+#btnPerfil:hover{
+    background-color: #1d4ed8;
+    transform: translateY(2px);
+}
