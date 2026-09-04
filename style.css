@@ -1,3 +1,14 @@
+/* GERAL */
+body{
+    padding: 20px;
+}
+
+.escuro {
+    background-color: black;
+    color: white;
+}
+
+/* POPUPS */
 .popup{
     display: none;
     position: fixed;
@@ -12,11 +23,7 @@
     border: 1px solid #ccc;
 }
 
-.escuro {
-    background-color: black;
-    color: white;
-}
-
+/* POSTS */
 .post{
     padding: 20px;
     border-radius: 10px;
@@ -213,61 +220,10 @@ font-size: 18px;
     transform: scale(0.98);
 }
 
-#btnLogin{
-    background-color: #2563eb;
-}
 
-#btnSing{
-    background-color: #2563eb;
-}
-
-#btnSalvaNome{
-    background-color: #2563eb;
-}
-
-#btnSalvaNome:hover{
-    background-color: #1d4ed8;
-}
-
-#btnSalvaSenha{
-    background-color: #2563eb;
-}
-
-#btnSalvaSenha:hover{
-    background-color: #1d4ed8;
-}
 
 #deletarConta{
     background-color: #ef4444;
-}
-
-#deletarConta:hover{
-    background-color: #dc2626;
-}
-
-#btnSair{
-    background-color: #6b7280;
-}
-
-#btnSair:hover{
-    background-color: #4b5563;
-}
-
-#btnPostar{
-    background-color: #2563eb;
-}
-
-#btnRecentes{
-    background-color: #6b7280;
-}
-
-#btnRecentes:hover{
-    background-color: #4b5563;
-    transform: translateY(2px);
-}
-
-#btnPerfil{
-    background-color: #2563eb;
 }
 
 #btnTema{
@@ -285,6 +241,8 @@ font-size: 18px;
     color: white;
     border-color: #555;
 }
+
+/* INPUTS */
 
 #inputNovoNome{
     padding: 10px;
@@ -316,10 +274,7 @@ font-size: 18px;
     box-sizing: border-box;
 }
 
-body{
-    padding: 20px;
-}
-
+/* BOTÕES */
 .btn{
     padding: 10px 20px;
     border: none;
@@ -329,10 +284,41 @@ body{
     transition: 0.2s;
 }
 
+#btnSair:hover,
+#btnRecentes:hover{
+    background-color: #4b5563;
+}
+
+#btnRecentes:hover{
+    transform: translateY(2px);
+}
+
+#btnLogin,
+#btnSing,
+#btnSalvaNome,
+#btnSalvaSenha,
+#btnPostar,
+#btnPerfil{
+    background-color: #2563eb;
+}
+
+#btnSair,
+#btnRecentes{
+    background-color: #6b7280;
+}
+
+#btnLogin:hover,
+#btnSing:hover,
+#btnSalvaNome:hover,
+#btnSalvaSenha:hover,
+#btnPostar:hover,
+#btnPerfil:hover{
+    background-color: #1d4ed8;
+}
+
 #btnLogin:hover,
 #btnSing:hover,
 #btnPostar:hover,
 #btnPerfil:hover{
-    background-color: #1d4ed8;
     transform: translateY(2px);
 }
