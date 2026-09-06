@@ -4,6 +4,8 @@ body{
     font-family: Arial,sans-serif;
     background-color: #ebebeb;
     line-height: 1.5;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .escuro {
@@ -247,6 +249,9 @@ body{
     box-sizing: border-box;
     width: 100%;
     max-width: 600px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #inputPesquisar{
@@ -259,6 +264,22 @@ body{
 }
 
 /* BOTÕES */
+#btnTema{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#btnSalvaNome,
+#btnSalvaSenha,
+#deletarConta,
+#btnSair,
+#btnPostar{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .btn{
     padding: 10px 20px;
     border: none;
@@ -353,6 +374,29 @@ body{
     box-shadow: 0 0 0 1px #2563eb;
 }
 
+#inputNovoNome,
+#inputNovaSenha{
+    width: 100%;
+    max-width: 600px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#filtrosPosts{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#contadorCaracteres{
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
 @media (max-width: 600px){
     body{
         padding: 10px;
@@ -361,4 +405,26 @@ body{
         width: calc(100% - 20px);
         box-sizing: border-box;
     }
+
+    #inputNovoNome,
+    #inputNovaSenha,
+    #inputPost,
+    #inputPesquisar{
+        max-width: 100%;
+    }
+
+    #filtrosPosts{
+        flex-direction: column;
+        align-items: stretch;
+    }
 }
+
+#btnSalvaSenha,
+#deletarConta,
+#btnSair{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+}
+
