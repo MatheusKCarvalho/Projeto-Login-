@@ -339,10 +339,26 @@ body{
     margin: 0 auto 20px;
 }
 
+.escuro #perfilUsuario{
+    background-color: #1f1f1f;
+    border: 1px solid #ccc;
+    color: #f0ebeb;
+}
+
 #inputNovoNome:focus,
 #inputNovaSenha:focus,
 #inputPost:focus,
 #inputPesquisar:focus{
     outline: none;
     box-shadow: 0 0 0 1px #2563eb;
+}
+
+@media (max-width: 600px){
+    body{
+        padding: 10px;
+    }
+    .popup{
+        width: calc(100% - 20px);
+        box-sizing: border-box;
+    }
 }
