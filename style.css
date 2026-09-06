@@ -1,6 +1,9 @@
 /* GERAL */
 body{
     padding: 20px;
+    font-family: Arial,sans-serif;
+    background-color: #ebebeb;
+    line-height: 1.5;
 }
 
 .escuro {
@@ -158,8 +161,8 @@ body{
 }
 
 .autor{
-font-weight: bold;
-font-size: 18px;
+    font-weight: bold;
+    font-size: 18px;
 }
  
 .texto{
@@ -226,7 +229,7 @@ font-size: 18px;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-sizing: border-box;
-        margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 #inputNovaSenha{
@@ -242,6 +245,8 @@ font-size: 18px;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-sizing: border-box;
+    width: 100%;
+    max-width: 600px;
 }
 
 #inputPesquisar{
@@ -249,6 +254,8 @@ font-size: 18px;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-sizing: border-box;
+    width: 100%;
+    max-width: 600px;
 }
 
 /* BOTÕES */
@@ -259,10 +266,12 @@ font-size: 18px;
     color: white;
     cursor: pointer;
     transition: 0.2s;
+    
 }
 
 #btnSair:hover,
-#btnRecentes:hover{
+#btnRecentes:hover,
+#btnCurtidos:hover{
     background-color: #4b5563;
 }
 
@@ -280,7 +289,8 @@ font-size: 18px;
 }
 
 #btnSair,
-#btnRecentes{
+#btnRecentes,
+#btnCurtidos{
     background-color: #6b7280;
 }
 
@@ -318,4 +328,21 @@ font-size: 18px;
     background-color: #1f1f1f;
     color: white;
     border-color: #555;
+}
+
+#perfilUsuario{
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    max-width: 600px;
+    margin: 0 auto 20px;
+}
+
+#inputNovoNome:focus,
+#inputNovaSenha:focus,
+#inputPost:focus,
+#inputPesquisar:focus{
+    outline: none;
+    box-shadow: 0 0 0 1px #2563eb;
 }
