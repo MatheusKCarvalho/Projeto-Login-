@@ -15,6 +15,48 @@ body{
     color: white;
 }
 
+/* PERFIL */
+
+#perfilUsuario{
+    background-color: white;
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid #ccc;
+    max-width: 600px;
+    margin: 0 auto 20px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+}
+
+.escuro #perfilUsuario{
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+    color: #f0ebeb;
+}
+
+#perfilUsuario h1{
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+#perfilUsuario p{
+    margin: 5px 0;
+}
+
+#perfilNome{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#perfilEmail{
+    font-size: 14px;
+    color: #666;
+}
+
+#perfilUsuario #btnPerfil{
+    margin-top: 15px;
+}
+
 /* POPUPS */
 .popup{
     display: none;
@@ -285,11 +327,54 @@ body{
     border-color: #555;
 }
 
+#inputNovoNome:focus,
+#inputNovaSenha:focus,
+#inputPost:focus,
+#inputPesquisar:focus{
+    outline: none;
+    box-shadow: 0 0 0 2px #2563eb;
+}
+
+#inputNovoNome,
+#inputNovaSenha{
+    width: 100%;
+    max-width: 600px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* FILTROS E CONTADOR */
+
+#filtrosPosts{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#contadorCaracteres{
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
 /* BOTÕES */
+
+/* BOTÕES GERAIS */
+
 #btnTema{
     margin-left: auto;
     margin-right: auto;
     display: block;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
 #btnSalvaNome,
@@ -313,15 +398,7 @@ body{
     
 }
 
-#btnSair:hover,
-#btnRecentes:hover,
-#btnCurtidos:hover{
-    background-color: #4b5563;
-}
-
-#btnRecentes:hover{
-    transform: translateY(-2px);
-}
+/* CORES DOS BOTÕES */
 
 #btnLogin,
 #btnSing,
@@ -336,6 +413,27 @@ body{
 #btnRecentes,
 #btnCurtidos{
     background-color: #6b7280;
+}
+
+#deletarConta{
+    background-color: #ef4444;
+}
+
+.escuro #btnTema{
+    background-color: #1f1f1f;
+    color: white;
+    border-color: #555;
+}
+
+/* HOVERS */
+#btnSair:hover,
+#btnRecentes:hover,
+#btnCurtidos:hover{
+    background-color: #4b5563;
+}
+
+#btnRecentes:hover{
+    transform: translateY(-2px);
 }
 
 #btnLogin:hover,
@@ -354,73 +452,6 @@ body{
     transform: translateY(-2px);
 }
 
-#deletarConta{
-    background-color: #ef4444;
-}
-
-#btnTema{
-    padding: 10px 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: white;
-    color: #333;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.escuro #btnTema{
-    background-color: #1f1f1f;
-    color: white;
-    border-color: #555;
-}
-
-#perfilUsuario{
-    background-color: white;
-    padding: 25px;
-    border-radius: 16px;
-    border: 1px solid #ccc;
-    max-width: 600px;
-    margin: 0 auto 20px;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
-}
-
-.escuro #perfilUsuario{
-    background-color: #1f1f1f;
-    border: 1px solid #333;
-    color: #f0ebeb;
-}
-
-#inputNovoNome:focus,
-#inputNovaSenha:focus,
-#inputPost:focus,
-#inputPesquisar:focus{
-    outline: none;
-    box-shadow: 0 0 0 2px #2563eb;
-}
-
-#inputNovoNome,
-#inputNovaSenha{
-    width: 100%;
-    max-width: 600px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#filtrosPosts{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-#contadorCaracteres{
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
 #btnTema:hover{
     background-color: #f3f4f6;
     transform: translateY(-2px);
@@ -430,29 +461,8 @@ body{
     background-color: #2c2c2c;
 }
 
-#perfilUsuario h1{
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 24px;
-}
 
-#perfilUsuario p{
-    margin: 5px 0;
-}
 
-#perfilNome{
-    font-size: 18px;
-    font-weight: bold;
-}
-
-#perfilEmail{
-    font-size: 14px;
-    color: #666;
-}
-
-#perfilUsuario #btnPerfil{
-    margin-top: 15px;
-}
 
 @media (max-width: 600px){
     body{
